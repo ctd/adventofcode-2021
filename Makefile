@@ -1,4 +1,4 @@
-DAYS := $(wildcard */.)
+DAYS := $(sort $(wildcard */.))
 
 .PHONY: all
 all: $(DAYS)
