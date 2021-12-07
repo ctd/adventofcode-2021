@@ -10,21 +10,19 @@ def part2(crabs):
 
 
 def solve(crabs, part2=False):
-    minpos = None
-    mincost = None
-    for pos in range(min(crabs), max(crabs) + 1):
-        cost = sum(
-            map(
-                lambda crab: abs(pos - crab)
-                if not part2
-                else int(abs(pos - crab) * ((abs(pos - crab) + 1) / 2)),
-                crabs,
-            )
+    return min(
+        map(
+            lambda pos: sum(
+                map(
+                    lambda crab: abs(pos - crab)
+                    if not part2
+                    else int(abs(pos - crab) * ((abs(pos - crab) + 1) / 2)),
+                    crabs,
+                )
+            ),
+            range(min(crabs), max(crabs) + 1),
         )
-        if not mincost or cost < mincost:
-            minpos = pos
-            mincost = cost
-    return mincost
+    )
 
 
 def test():
