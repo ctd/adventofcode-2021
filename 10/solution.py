@@ -1,25 +1,26 @@
 #!/usr/bin/env python
 
 EXPECTED = {
-    '(': ')',
-    '[': ']',
-    '{': '}',
-    '<': '>',
+    "(": ")",
+    "[": "]",
+    "{": "}",
+    "<": ">",
 }
 
 P1_SCORES = {
-    ')': 3,
-    ']': 57,
-    '}': 1197,
-    '>': 25137,
+    ")": 3,
+    "]": 57,
+    "}": 1197,
+    ">": 25137,
 }
 
 P2_SCORES = {
-    ')': 1,
-    ']': 2,
-    '}': 3,
-    '>': 4,
+    ")": 1,
+    "]": 2,
+    "}": 3,
+    ">": 4,
 }
+
 
 def find_illegal_chars(line):
     expect = list()
@@ -52,7 +53,7 @@ def part2(puzzlein):
             for c in completion:
                 score = (score * 5) + P2_SCORES.get(c)
             scores.append(score)
-    return sorted(scores)[int(len(scores)/2)]
+    return sorted(scores)[int(len(scores) / 2)]
 
 
 def test():
