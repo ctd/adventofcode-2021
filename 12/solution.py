@@ -5,6 +5,7 @@ class Cave:
     def __init__(self, name):
         self.name = name
         self.connected = set()
+        self.is_small = name.islower()
 
     def __repr__(self):
         return self.name
@@ -14,9 +15,6 @@ class Cave:
 
     def connect(self, other_cave):
         self.connected.add(other_cave)
-
-    def is_small(self):
-        return self.name.islower()
 
 
 def parse_puzzle(puzzlein):
@@ -39,12 +37,12 @@ def get_paths_to(start, end, history, paths, part2=False):
             continue
         if (
             part2
-            and cave.is_small()
+            and cave.is_small
             and cave in history
-            and any([[*history, start].count(c) > 1 for c in history if c.is_small()])
+            and any([[*history, start].count(c) > 1 for c in history if c.is_small])
         ):
             continue
-        if not part2 and cave.is_small() and cave in history:
+        if not part2 and cave.is_small and cave in history:
             continue
         get_paths_to(cave, end, [*history, start], paths, part2)
     return paths
